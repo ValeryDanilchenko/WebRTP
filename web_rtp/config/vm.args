@@ -1,0 +1,7 @@
+-mode interactive
+-sname web_rtp
+
+-setcookie web_rtp_cookie
+
++K true
++A30
