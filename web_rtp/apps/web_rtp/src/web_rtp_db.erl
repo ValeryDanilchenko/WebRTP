@@ -70,8 +70,10 @@ init(_Args =State) ->
 create_table() ->
     mnesia:create_schema([node()]),
     mnesia:start(),
+    % mnesia:create_table(abonent, [ 
+    %         {disc_copies, [node()]}, {attributes, record_info(fields, abonent)}]).
     mnesia:create_table(abonent, [ 
-            {disc_copies, [node()]}, {attributes, record_info(fields, abonent)}]).
+            {ram_copies, [node()]}, {attributes, record_info(fields, abonent)}]).
     % mnesia:create_schema([web_rtp]),
     % mnesia:start(),
     % mnesia:create_table(abonent, [ 

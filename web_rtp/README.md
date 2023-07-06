@@ -29,7 +29,7 @@ HTTP DELETE/call/abonent/{abonent_number}
 - реализован Docker контейнер
 
 
-[Демо видео]()
+[Демо видео](https://youtu.be/zl5v_5luRfo)
 
 
 
@@ -185,10 +185,10 @@ HTTP DELETE/call/abonent/{abonent_number}
 
 Docker
 ===
-Для домонстрации проекта доступен Docker образ:
+Для домонстрации проекта будет доступен Docker образ:
 ....
 
 
-Запустить и проверить работу можно 
+Запустить и проверить работу в ближайшее время возможно будет:
 
     $ docker run valerydanilchenko-web-rtp:latest

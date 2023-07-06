@@ -1,50 +1,47 @@
-# FROM erlang:24-alpine
+# Stage 1
 FROM erlang:24-alpine AS build
 
-#Переопределяем рабочую директорию
-# RUN mkdir /buildroot
+#Creating working directory
+RUN mkdir /buildroot
 WORKDIR /buildroot
 
-# Копирование кода проекта
+# Copy project code into workdir
 COPY . /buildroot/web_rtp
 
-# Переход в папку с проектом
+# Coming into workdit
 WORKDIR /buildroot/web_rtp
 
-# Установка rebar3
+# Installing rebar3
+RUN wget -O rebar3 https://github.com/erlang/rebar3/releases/latest/download/rebar3 && \
+    chmod +x rebar3
 RUN apk add --no-cache make gcc musl-dev
 
-# Обновление пакетного менеджера и установка необходимых зависимостей
+# Downloading dependensies for project
 RUN apk update && \
     apk add --no-cache ffmpeg ortp-dev bctoolbox-dev && \
     apk add --no-cache erlang
-    # apk add --no-cache ffmpeg ortp-dev bctoolbox-dev && \
-    # apk add --no-cache ncurses-libs && \
-    # apk add --no-cache libstdc++
 
 
-
-# Установка git
+# Installing git
 RUN apk add git
 
-# Сборка проекта с помощью rebar3
-RUN rebar3 compile
+# Compiling project with rebar3
 RUN rebar3 as prod release
 
+# Stage 2
+FROM alpine:3.18
 
-FROM alpine:3.17
-
+# Downloading deps for an operating system
 RUN apk add --no-cache openssl && \
     apk add --no-cache ncurses-libs && \
     apk add --no-cache libstdc++
 
-# Копирование собранного приложения из предыдущего образа
+# Copy built app
 COPY --from=build /buildroot/web_rtp/_build/prod/rel/web_rtp /web_rtp
 
-# Открытие портов (если необходимо)
+# Exposing ports
 EXPOSE 8080
-EXPOSE 8443
+EXPOSE 5060
 
-# Точка входа для запуска приложения WebRTP
+# Stating app WebRTP
 CMD ["/web_rtp/bin/web_rtp", "foreground"]
-# CMD ["/web_rtp/bin/web_rtp", "rebar3 shell"]

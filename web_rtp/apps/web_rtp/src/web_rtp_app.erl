@@ -14,19 +14,8 @@
 %% @doc Callback function for starting the application. Starts cowboy HTTP server 
 %% and configures handlers for different routes.
 %% @private
-start(_Type, _StartArgs) ->
-    Dispatch = cowboy_router:compile([
-        {'_',[ 
-            {"/", web_rtp_handler, []},
-            {"/abonents", web_rtp_handler, []},
-            {"/abonent/:abonent_number", web_rtp_handler, []},
-            {"/abonent", web_rtp_handler, []}
-        ]}
-    ]),
-    cowboy:start_clear(http,  [{port, 8080}], 
-        #{env => #{dispatch => Dispatch}}),
-    io:format("Application started. Cowboy HTTP server listening on http://localhost:8080~n"),
-
+start(_Type, _StartArgs) -> 
+    io:format("Application started!~n"),
     web_rtp_sup:start_link().
 
 %% @doc Callback function for stopping the application
