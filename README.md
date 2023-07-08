@@ -187,7 +187,7 @@ Docker
 ===
 Доступен рабойчий Docker образ:
 
-    $ docker run valerydanilchenko/web-rtp:latest
+    $ docker run -p 8080:8080 5060:5060 valerydanilchenko/web-rtp:latest
 
 
 Переходим на http://localhost:8080 для отправки запросов к WebRTP
