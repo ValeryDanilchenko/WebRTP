@@ -12,12 +12,9 @@ COPY . /buildroot/web_rtp
 WORKDIR /buildroot/web_rtp
 
 # Installing rebar3
-# RUN wget -O rebar3 https://github.com/erlang/rebar3/releases/latest/download/rebar3 && \
-# RUN wget -O rebar3 https://github.com/erlang/rebar3/releases/tag/3.10.0/download/rebar3 && \
-#     chmod +x rebar3
-RUN wget https://s3.amazonaws.com/rebar3/rebar3 && chmod +x rebar3
-RUN ./rebar3 local install
-# RUN apk add --no-cache rebar3 
+RUN wget -O rebar3 https://github.com/erlang/rebar3/releases/latest/download/rebar3 && \
+RUN wget -O rebar3 https://github.com/erlang/rebar3/releases/tag/3.10.0/download/rebar3 && \
+    chmod +x rebar3
 RUN apk add --no-cache make gcc musl-dev
 
 # Downloading dependensies for project

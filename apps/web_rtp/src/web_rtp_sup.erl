@@ -20,24 +20,16 @@
 %% @doc API function starting supervisor process
 %% @private
 start_link() ->
-    start_cowboy(),
-    nksip:start_link(test_ip_set, #{sip_from => "sip:102@test.domain",plugins => [nksip_uac_auto_auth], sip_listen => "<sip:all:5060;transport=udp>"}),
-
+    start_cowboy(),    
     SupFlags = #{strategy => one_for_all,
                  intensity => 10,
                  period => 60},
     ChildSpecs = [
-        % #{
-        %     id => web_rtp_nksip_sup,
-        %     start => {web_rtp_nksip_sup, start_link, []},
-        %     restart => transient,
-        %     type => supervisor
-        % },
-        % nksip:get_sup_spec(test_ip_102, #{
-        %     sip_from => "sip:102@test.domain",
-        %     plugins => [nksip_uac_auto_auth, nksip_100rel],
-        %     sip_listen => "<sip:all:5060;transport=udp>"
-        % }),
+        nksip:get_sup_spec(test_ip_102, #{
+            sip_from => "sip:102@test.domain",
+            plugins => [nksip_uac_auto_auth, nksip_100rel],
+            sip_listen => "<sip:all:5060;transport=udp>"
+        }),
         #{
             id => web_rtp_db,
             start => {web_rtp_db, start, []},

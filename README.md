@@ -54,11 +54,11 @@ HTTP DELETE/call/abonent/{abonent_number}
 - ## HTTP GET/call/abonent/{abonent_number}
     Запрос вызывает абонента с номером abonent_number с помощью протокола SIP 
     
-    ![SIP Scheme](/web_rtp/apps/web_rtp/data/media/SIP_scheme.png)
+    ![SIP Scheme](./apps/web_rtp/data/media/SIP_scheme.png)
 
     ### Пример выполнеиния вызова:
 
-    ![SIP Scheme](/web_rtp/apps/web_rtp/data/media/call_abonent_101.gif)
+    ![SIP Scheme](./apps/web_rtp/data/media/call_abonent_101.gif)
 
     Вызывется функция web_rtp_nadler:call_abonent/1
 
@@ -167,28 +167,27 @@ HTTP DELETE/call/abonent/{abonent_number}
 - ## HTTP GET/call/abonents
 Аналогично с call/abonent/{number} обрабатывается запрос на вызов абонентов. Для каждого абонента из БД Mnesia вызывается функция web_rtp_nadler:call_abonent/1
 
-![Call abonents](/web_rtp/apps/web_rtp/data/media/call_abonents.png)
+![Call abonents](./apps/web_rtp/data/media/call_abonents.png)
 
 
 - ## HTTP POST/call/abonent
 Запрос для добавления нового абонета в таблицу 
 
-![POST request](/web_rtp/apps/web_rtp/data/media/post_req.png)
+![POST request](./apps/web_rtp/data/media/post_req.png)
 
 
 - ## HTTP DELETE/call/abonent/{number}
 Запрос для удаления абонета из таблицы
 
-![DELETE request](/web_rtp/apps/web_rtp/data/media/delete_req.png)
+![DELETE request](./apps/web_rtp/data/media/delete_req.png)
 
 
 
 Docker
 ===
-Для домонстрации проекта будет доступен Docker образ:
-....
-
-
-Запустить и проверить работу в ближайшее время возможно будет:
+Доступен рабойчий Docker образ:
 
     $ docker run valerydanilchenko/web-rtp:latest
+
+
+Переходим на http://localhost:8080 для отправки запросов к WebRTP
