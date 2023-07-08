@@ -37,7 +37,7 @@ HTTP DELETE/call/abonent/{abonent_number}
 ====
 Клонируем репозиторий 
 
-    $ git clone https/
+    $ git clone https://github.com/ValeryDanilchenko/WebRTP
 
 Далее переходим в рабочую директори, компилируем и запускаем приложение с помощью rebar 3 
     $ cd web_rtp
@@ -191,4 +191,4 @@ Docker
 
 Запустить и проверить работу в ближайшее время возможно будет:
 
-    $ docker run valerydanilchenko-web-rtp:latest
+    $ docker run valerydanilchenko/web-rtp:latest
