@@ -7,14 +7,7 @@
    [kernel,
    stdlib,
    cowboy,
-   nksip,
-
-     crypto,
-    ssl,
-    nkpacket,
-    nkserver,
-    % lager,
-    ranch
+   nksip
    ]},
   {env,[]},
   {modules, []},
